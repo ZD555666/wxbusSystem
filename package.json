@@ -1,7 +1,6 @@
 {
   "name": "weChatBus",
   "version": "1.0.0",
-  "description": "",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,5 +10,15 @@
   "license": "ISC",
   "dependencies": {
     "@vant/weapp": "^1.7.2"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZD555666/wxbusSystem.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ZD555666/wxbusSystem/issues"
+  },
+  "homepage": "https://github.com/ZD555666/wxbusSystem#readme",
+  "description": ""
 }
