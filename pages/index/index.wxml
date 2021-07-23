@@ -1,7 +1,14 @@
-
-<view>123456 478979 123456</view>
-
-<view>123456 478979 zjjjjjj</view>
-
-<view>7978546</view>
+<view>
+  <van-search
+  value="{{ value }}"
+  shape="round"
+  placeholder="查站点、线路"
+/>
+  <van-tabbar active="{{ active }}" bind:change="onChange">
+  <van-tabbar-item icon="home-o">首页</van-tabbar-item>
+  <van-tabbar-item icon="exchange">去哪</van-tabbar-item>
+  <van-tabbar-item icon="todo-list-o">历史</van-tabbar-item>
+  <van-tabbar-item icon="contact">个人中心</van-tabbar-item>
+</van-tabbar>
+</view>
 

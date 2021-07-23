@@ -4,8 +4,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-    //////////////gjwgjwgjwgjwgjwgjgwj12345
-    ////////////123
+    active: 0,
+  },
+  onChange(event) {
+    this.setData({ active: event.detail });
+    wx.showToast({
+      title: `点击标签 ${event.detail + 1}`,
+      icon: 'none',
+    });
   },
 
   /**
