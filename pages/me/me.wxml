@@ -1,12 +1,12 @@
 <view id="head">
   <van-row>
-    <van-image round width="5rem" height="5rem" src="https://img.yzcdn.cn/vant/cat.jpeg" />
-    <button class="toLogin" bindtap="toLogin">登录/注册</button>
+    <van-image round width="5rem" height="5rem" src="{{loginInfo.avatarUrl}}" />
+      <button class="toLogin" bindtap="toLogin" >{{isLogin}}</button>
   </van-row>
 </view>
 
 
-<van-cell is-link title="单元格" link-type="navigateTo" url="/pages/dashboard/index" />
-<van-cell is-link title="单元格" link-type="navigateTo" url="/pages/dashboard/index" />
-<van-cell is-link title="单元格" link-type="navigateTo" url="/pages/dashboard/index" />
-<van-button type="primary" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">登录</van-button>
+<van-cell is-link title="个人信息" link-type="navigateTo" url="" />
+<van-cell is-link title="我的钱包" link-type="navigateTo" url="" />
+<van-cell is-link title="扫码乘车" link-type="navigateTo" url="" />
+<van-cell is-link title="系统设置等等等" link-type="navigateTo" url="" />

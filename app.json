@@ -6,6 +6,7 @@
     "pages/history/history",
     "pages/me/me",
     "pages/login/login",
+    "pages/exit/exit",
     "custom-tab-bar/index"
   ],
   "window":{

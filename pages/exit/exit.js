@@ -1,31 +1,18 @@
+// pages/exit/exit.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    
-  },
 
-  getUserInfo(e) {
-    console.log(e.detail);
-  },
-
-  onGetUserInfo(e) {
-    console.log(e.detail.userInfo);
-    if(e.detail.userInfo!=undefined){
-      wx.setStorageSync('loginInfo', e.detail.userInfo)
-      wx.switchTab({
-        url: "../me/me"
-      })
-    }
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+
   },
 
   /**

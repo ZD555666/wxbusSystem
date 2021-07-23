@@ -1,1 +1,11 @@
-
+<view id="head">
+  <van-image class="headImg" radius="1rem" width="7rem" height="7rem" src="/images/bus.ico" />
+</view>
+<view id="content">
+  <van-button custom-style="border-radius: 1rem;width: 90%" type="primary" open-type="getUserInfo"
+    bindgetuserinfo="onGetUserInfo">
+    微信登录
+  </van-button>
+  <view style="height:15px"></view>
+  <van-button color="#7232dd" custom-style="border-radius: 1rem;width: 90%">手机号登录</van-button>
+</view>
