@@ -1,7 +1,11 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/towhere/towhere",
+    "pages/history/history",
+    "pages/me/me",
+    "custom-tab-bar/index"
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -9,12 +13,36 @@
     "navigationBarTitleText": "掌上公交",
     "navigationBarTextStyle":"black"
   },
-  "style": "v2",
+
   "sitemapLocation": "sitemap.json",
   "usingComponents": {
     "van-icon": "@vant/weapp/icon/index",
     "van-tabbar": "@vant/weapp/tabbar/index",
     "van-tabbar-item": "@vant/weapp/tabbar-item/index",
     "van-search": "@vant/weapp/search/index"
+  },
+
+  "tabBar":{
+    "custom": true,
+    "list":[
+      {
+        "text":"首页",
+        "pagePath":"pages/index/index"
+      },
+      {
+        "text":"去哪",
+        "pagePath":"pages/towhere/towhere"
+      },
+      {
+        "text":"历史",
+        "pagePath":"pages/history/history"
+      },
+      {
+        "text":"个人中心",
+        "pagePath":"pages/me/me"
+      }
+    ]
   }
+
+
 }
