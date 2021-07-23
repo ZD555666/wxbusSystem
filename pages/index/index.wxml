@@ -11,4 +11,4 @@
   <van-tabbar-item icon="contact">个人中心</van-tabbar-item>
 </van-tabbar>
 </view>
-
+<view>1234</view>
