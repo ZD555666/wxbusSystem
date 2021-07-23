@@ -1,2 +1,12 @@
-<!--pages/me/me.wxml-->
-<text>pages/me/me.wxml</text>
+<view id="head">
+  <van-row>
+    <van-image round width="5rem" height="5rem" src="https://img.yzcdn.cn/vant/cat.jpeg" />
+    <button class="toLogin" bindtap="toLogin">登录/注册</button>
+  </van-row>
+</view>
+
+
+<van-cell is-link title="单元格" link-type="navigateTo" url="/pages/dashboard/index" />
+<van-cell is-link title="单元格" link-type="navigateTo" url="/pages/dashboard/index" />
+<van-cell is-link title="单元格" link-type="navigateTo" url="/pages/dashboard/index" />
+<van-button type="primary" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">登录</van-button>
