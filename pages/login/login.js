@@ -1,11 +1,13 @@
 // import Notify from '../../miniprogram_npm/@vant/weapp/notify/notify';
+// import Loading from '../../miniprogram_npm/@vant/weapp/loading/index';
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    
+    loading:false
   },
 
   getUserInfo(e) {
@@ -14,19 +16,72 @@ Page({
 
   onGetUserInfo(e) {
     console.log(e.detail.userInfo);
-    if(e.detail.userInfo!=undefined){
+    if (e.detail.userInfo != undefined) {
       wx.setStorageSync('loginInfo', e.detail.userInfo)
-      wx.switchTab({
-        url: "../me/me"
+      wx.login({
+        success: res => {
+          console.log(res.code)
+          if (res.code) {
+            this.setData({loading:true})
+            wx.request({
+              url: app.globalData.prefix+'/wx/getOpenId',
+              data: {
+                code: res.code
+              },
+              success: (res) => {
+                console.log(res)
+                wx.setStorageSync('opid', res.data.data.openid)
+                if(!res.data.data.isRegis){
+                  wx.navigateTo({
+                    url: '../phone/phone',
+                  })
+                }else{
+                  // wx.setStorageSync('key', data)
+                  wx.switchTab({
+                    url: '../me/me',
+                  })
+                }
+                // var openid = res.data.data.openid
+                // this.globalData.openId = openid
+                // // 将用户信息添加到数据库 （未授权时 数据库只有openId）接口isAuth是否用户已授权
+                // wx.request({
+                //   url: 'http://localhost:8080/wx/posden-spring-wx-user/saveOrUpdateUser',
+                //   method: 'POST',
+                //   data: {
+                //     openId: openid
+                //   },
+                //   success: (res) => {
+                //     // token 本地存储
+                //     wx.setStorageSync('token', res.data.data.token)
+                //     if (!res.data.data.userInfo.isAuth) {
+                //       wx.reLaunch({
+                //         url: '/pages/index/index',
+                //       })
+                //     }
+                //   }
+                // })
+              },
+              fail: (error) => {
+                console.log(error)
+              }
+            })
+          }
+        }
       })
+      
+     
+      
+        
     }
+
   },
+
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+
   },
 
   /**

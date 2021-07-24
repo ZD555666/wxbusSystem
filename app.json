@@ -7,6 +7,7 @@
     "pages/me/me",
     "pages/login/login",
     "pages/exit/exit",
+    "pages/phone/phone",
     "custom-tab-bar/index"
   ],
   "window":{
@@ -28,7 +29,12 @@
     "van-cell-group": "@vant/weapp/cell-group/index",
     "van-row": "@vant/weapp/row/index",
     "van-col": "@vant/weapp/col/index",
-    "van-notify": "@vant/weapp/notify/index"
+    "van-notify": "@vant/weapp/notify/index",
+    "van-dialog": "@vant/weapp/dialog/index",
+    "van-field": "@vant/weapp/field/index",
+    "van-count-down": "@vant/weapp/count-down/index",
+    "van-loading": "@vant/weapp/loading/index",
+    "van-skeleton": "@vant/weapp/skeleton/index"
   },
 
   "tabBar":{
