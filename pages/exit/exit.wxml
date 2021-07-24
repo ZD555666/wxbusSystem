@@ -1,1 +1,1 @@
-这里是退出登录
+<van-button color="#7232dd" custom-style="border-radius: 1rem;width: 90%;text-align: center;" bind:click="exit">退出登录</van-button>

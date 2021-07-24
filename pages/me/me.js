@@ -10,7 +10,8 @@ Component({
 
       if (info == (undefined || '')) {
         this.setData({
-          isLogin: "登录/注册"
+          isLogin: "登录/注册",
+          loginInfo: ""
         })
       } else {
         this.setData({
@@ -23,6 +24,7 @@ Component({
   },
 
   data: {
+    defaultAva: '/images/defaultAva.jpg',
     loginInfo: '',
     isLogin: ''
   },
@@ -30,7 +32,6 @@ Component({
   lifetimes: {
     // 生命周期函数，可以为函数，或一个在methods段中定义的方法名
     attached: function () {
-
     },
     moved: function () { },
     detached: function () { },
@@ -47,13 +48,10 @@ Component({
     },
 
     toLogin: function () {
+      console.log(this.data.loginInfo)
       if(this.data.loginInfo == (undefined || '')){
         wx.navigateTo({
           url: '../login/login',
-        })
-      }else{
-        wx.navigateTo({
-          url: '../exit/exit',
         })
       }
     }

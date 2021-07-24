@@ -1,3 +1,4 @@
+// import Notify from '../../miniprogram_npm/@vant/weapp/notify/notify';
 Page({
 
   /**
