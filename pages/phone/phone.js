@@ -64,7 +64,7 @@ Page({
       success:(res)=>{
         console.log(res.data.code)
         if(res.data.code==200){
-          
+          wx.setStorageSync('isLogin', wx.getStorageSync('opid'))
           wx.switchTab({
             url: '../me/me',
           })

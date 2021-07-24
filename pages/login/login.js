@@ -36,7 +36,7 @@ Page({
                     url: '../phone/phone',
                   })
                 }else{
-                  // wx.setStorageSync('key', data)
+                  wx.setStorageSync('isLogin', res.data.data.openid)
                   wx.switchTab({
                     url: '../me/me',
                   })
