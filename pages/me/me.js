@@ -1,19 +1,30 @@
+const app = getApp()
 Component({
 
   pageLifetimes: {
     show() {
-      console.log(wx.getStorageSync('isLogin')+"11111111111111111111111111111111111111")
       let info = wx.getStorageSync('loginInfo')
       console.log(info)
       this.getTabBar().setData({
         active: 3
       });
 
-      if (info != (undefined || '') && wx.getStorageSync('isLogin') !='') {
-        this.setData({
-          loginInfo: info,
-          isLogin: info.nickName
+      if (info != (undefined || '') && wx.getStorageSync('isLogin') != '') {
+        wx.request({
+          url: app.globalData.prefix + '/wx/getLoginUserInfo',
+          method: "post",
+          data: {
+            opId: wx.getStorageSync('isLogin')
+          },
+          success: res => {
+            wx.setStorageSync('loginUserInfo', res.data.data)
+            this.setData({
+              loginInfo: res.data.data,
+              isLogin: res.data.data.nickname
+            })
+          }
         })
+     
       } else {
         this.setData({
           isLogin: "登录/注册",
@@ -29,6 +40,7 @@ Component({
     loginInfo: '',
     isLogin: ''
   },
+
 
   lifetimes: {
     // 生命周期函数，可以为函数，或一个在methods段中定义的方法名
@@ -55,7 +67,9 @@ Component({
           url: '../login/login',
         })
       }
-    }
+    },
+
+
 
   },
 

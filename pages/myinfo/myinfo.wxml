@@ -1,0 +1,36 @@
+<van-cell-group inset>
+  <van-cell title="头像"  center id="headImg">
+    <van-image width="{{headImgHeight}}" height="{{headImgHeight}}" round src="{{loginUserInfo.avatarurl}}"/>
+  </van-cell>
+  <van-cell title="手机号" value="{{phone}}" />
+  <van-cell title="昵称" value="{{nickName}}" is-link bind:click="clickNickName"/>
+  <van-cell title="性别" value="{{gender==1?'男':'女'}}" is-link bind:click="clickGender"/>
+  <van-cell title="家" value="" is-link/>
+  <van-cell title="公司" value="" is-link/>
+</van-cell-group>
+<view id="save"><van-button custom-style="width:25%" type="info" bind:click="saveInfo">保存</van-button></view>
+<van-dialog
+  use-slot
+  title="更换昵称"
+  show="{{ showNickName }}"
+  show-cancel-button
+  bind:confirm="changeNickName"
+  bind:close="onCloseNickName"
+  confirm-button-color="#000"
+>
+<van-cell-group>
+  <van-field
+    model:value="{{nickName}}"
+    placeholder="昵称"
+    border="{{ false }}"
+    auto-focus
+  />
+</van-cell-group>
+</van-dialog>
+<van-action-sheet
+  show="{{ showGender }}"
+  actions="{{ actions }}"
+  bind:close="onCloseGender"
+  bind:select="onSelectGender"
+/>
+<van-notify id="van-notify" />
