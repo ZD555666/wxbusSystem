@@ -38,7 +38,8 @@
     "van-loading": "@vant/weapp/loading/index",
     "van-skeleton": "@vant/weapp/skeleton/index",
     "van-action-sheet": "@vant/weapp/action-sheet/index",
-    "van-toast": "@vant/weapp/toast/index"
+    "van-toast": "@vant/weapp/toast/index",
+    "van-panel": "@vant/weapp/panel/index"
   },
 
   "tabBar":{

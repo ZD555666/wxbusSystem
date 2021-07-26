@@ -1,2 +1,10 @@
-<!--pages/towhere/towhere.wxml-->
-<text>pages/towhere/towhere.wxml</text>
+<view>
+  <view>
+    <van-cell-group>
+      <van-field value="{{ username }}" clearable left-icon="location" right-icon="sort"
+        bind:click-icon="onClickIcon" />
+      <van-field value="{{ password }}" left-icon="location" right-icon="search" border="{{ true }}" />
+    </van-cell-group>
+  </view>
+
+</view>

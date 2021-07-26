@@ -1,3 +1,42 @@
 <view>
-  <van-search value="{{ value }}" shape="round" placeholder="查站点、线路" />
+ <view class="location">
+  <van-icon bindtap="onLocation" name="location"  />
+  <text bindtap="onLocation">当前城市坐标：</text>
+  <text >{{name}}</text>
+ </view>
+  <van-search
+  value="{{ value }}"
+  shape="round"
+  placeholder="查站点、线路"
+/>
+  <view class="banner">
+    <swiper indicator-dots indicator-color="rgba(255,255,255,0.5)"
+     indicator-active-color="#fff" circular autoplay interval="2500">
+      <swiper-item><image src="http://www.cyzyedu.com/2018/Public/image/bigIndex/indexbanner1_02.jpg"></image></swiper-item>
+      <swiper-item><image src="http://www.cyzyedu.com/2018/Public/image/bigIndex/indexbanner2_02.jpg"></image></swiper-item>
+      <swiper-item><image src="http://www.cyzyedu.com/2018/Public/image/bigIndex/indexbanner3_02.jpg"></image></swiper-item>
+      <swiper-item><image src="http://www.cyzyedu.com/2018/Public/image/bigIndex/indexbanner4_02.jpg"></image></swiper-item>
+      <swiper-item><image src="http://www.cyzyedu.com/2018/Public/image/bigIndex/indexbanner5_02.jpg"></image></swiper-item>
+      <swiper-item><image src="http://www.cyzyedu.com/2018/Public/image/bigIndex/indexbanner8_02.jpg"></image></swiper-item>
+      <swiper-item><image src="http://www.cyzyedu.com/2018/Public/image/bigIndex/indexbanner7_02.jpg"></image></swiper-item>
+    </swiper>
+  </view>
+  <view>
+    <text class="text1" wx:if="{{name == '厦门市'}}">附近的站点：</text>
+    <text class="text1" wx:else>市中心：</text>
+    <view class="station">
+      <van-cell-group inset border>
+      <van-cell  icon="map-marked" title="市行政服务中心站" value="300m" />
+      <van-cell title="18路" value="非营业时间" label="方向：黄厝公交场站" />
+    </van-cell-group>
+    <van-cell-group inset border>
+      <van-cell icon="map-marked" title="金山洪塘站" value="300m" />
+    </van-cell-group>
+    <van-cell-group inset border>
+      <van-cell icon="map-marked" title="万达广场站" value="300m" />
+    </van-cell-group>
+    </view> 
+  </view>
 </view>
+
+

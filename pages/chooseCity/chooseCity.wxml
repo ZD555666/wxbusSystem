@@ -1,0 +1,13 @@
+<view>
+  <van-search
+  value="{{ value }}"
+  placeholder="请输入城市名称"
+  bind:change=""
+/>
+<van-button type="primary" block>定位城市：{{nowCity}}</van-button>
+<view>
+  <van-cell-group wx:for="{{cityList}}">
+     <van-cell title="{{item.fullname}}" />
+  </van-cell-group>
+</view>
+</view>
