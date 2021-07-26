@@ -1,5 +1,11 @@
 <view id="container">
   <view id="head">
-    <text>总资产</text>
+  <view class="head-first">
+    <text class="assets" space="emsp">总资产(元) </text>
+    <van-icon size='22px' color="white" name="{{assetsNum=='***'?'closed-eye':'eye-o'}}" bind:click="eyes" />
   </view>
+   
+    <view class="money">{{assetsNum}}</view>
+  </view>
+
 </view>
