@@ -20,5 +20,8 @@
     "url": "https://github.com/ZD555666/wxbusSystem/issues"
   },
   "homepage": "https://github.com/ZD555666/wxbusSystem#readme",
+  "directories": {
+    "lib": "lib"
+  },
   "description": ""
 }
