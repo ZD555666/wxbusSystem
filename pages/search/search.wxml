@@ -1,0 +1,10 @@
+<view>
+
+  <van-search
+  value="{{ value }}"
+  placeholder="搜索地点、站点"
+  bind:change=""/> 
+  <view class="histroy">
+   <text >搜索历史</text>
+  </view>
+</view>

@@ -1,4 +1,5 @@
 {
   "usingComponents": {},
-  "navigationBarTitleText": "历史"
+  "navigationBarTitleText": "新闻",
+  "onReachBottomDistance":100
 }
