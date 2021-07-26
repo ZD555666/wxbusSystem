@@ -12,7 +12,7 @@ Component({
       url: "/pages/towhere/towhere"
     },
     {
-      text: "历史",
+      text: "新闻",
       icon: "todo-list-o",
       url: "/pages/history/history"
     },

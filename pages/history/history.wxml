@@ -1,2 +1,12 @@
-<!--pages/history/history.wxml-->
-<text>pages/history/history.wxml</text>
+<view class="out">
+ <view class="row" wx:for="{{dataList}}" wx:key="index">
+    <view class="pic">
+      <image src="{{item.src}}"></image>
+    </view>
+    <view class="text" >
+      <view class="title">{{item.title}}</view> 
+      <view class="time">{{item.time}}</view>
+    </view>
+  </view>
+</view>
+

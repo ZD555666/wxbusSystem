@@ -10,7 +10,8 @@
     "pages/phone/phone",
     "pages/myinfo/myinfo",
     "pages/wollet/wollet",
-    "custom-tab-bar/index"
+    "custom-tab-bar/index",
+    "pages/search/search"
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -54,7 +55,7 @@
         "pagePath":"pages/towhere/towhere"
       },
       {
-        "text":"历史",
+        "text":"新闻",
         "pagePath":"pages/history/history"
       },
       {
