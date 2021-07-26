@@ -1,7 +1,7 @@
 const app = getApp()
 import Notify from '../../miniprogram_npm/@vant/weapp/notify/notify';
+import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -90,7 +90,12 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function () {
+    if (wx.getStorageSync("loginUserInfo") == '') {
+      wx.redirectTo({
+        url: '../login/login',
+      })
+    }
     this.getRect(),
       this.setData({
         loginUserInfo: wx.getStorageSync('loginUserInfo'),
@@ -111,7 +116,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    
   },
 
   /**

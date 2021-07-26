@@ -34,3 +34,4 @@
   bind:select="onSelectGender"
 />
 <van-notify id="van-notify" />
+<van-toast id="van-toast" />

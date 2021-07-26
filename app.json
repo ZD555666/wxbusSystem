@@ -9,6 +9,7 @@
     "pages/exit/exit",
     "pages/phone/phone",
     "pages/myinfo/myinfo",
+    "pages/wollet/wollet",
     "custom-tab-bar/index"
   ],
   "window":{
@@ -36,7 +37,8 @@
     "van-count-down": "@vant/weapp/count-down/index",
     "van-loading": "@vant/weapp/loading/index",
     "van-skeleton": "@vant/weapp/skeleton/index",
-    "van-action-sheet": "@vant/weapp/action-sheet/index"
+    "van-action-sheet": "@vant/weapp/action-sheet/index",
+    "van-toast": "@vant/weapp/toast/index"
   },
 
   "tabBar":{
