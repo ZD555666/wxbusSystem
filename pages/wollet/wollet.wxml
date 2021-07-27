@@ -1,11 +1,24 @@
-<view id="container">
-  <view id="head">
-  <view class="head-first">
-    <text class="assets" space="emsp">总资产(元) </text>
-    <van-icon size='22px' color="white" name="{{assetsNum=='***'?'closed-eye':'eye-o'}}" bind:click="eyes" />
+<view id="box">
+  <view id="container">
+    <view id="head">
+      <view class="head-first">
+        <text class="assets" space="emsp">总资产(元) </text>
+        <van-icon size='22px' color="white" name="{{assetsNum=='***'?'closed-eye':'eye-o'}}" bind:click="eyes" />
+      </view>
+      <view class="money">{{assetsNum}}</view>
+    </view>
   </view>
-   
-    <view class="money">{{assetsNum}}</view>
-  </view>
-
 </view>
+<van-sticky>
+  <van-tabs color="rgb(25, 137, 250)" animated='true' swipeable='true'>
+    <van-tab title="收入" swipeable>
+      <van-cell-group inset='true' clickable='true' >
+        <van-cell title="单元格" value="内容" link-type/>
+        <van-cell title="单元格" value="内容" clickable/>
+        <van-cell title="单元格" value="内容" inset/>
+        <van-cell title="单元格" value="内容" />
+      </van-cell-group>
+    </van-tab>
+    <van-tab title="支出" swipeable>支出</van-tab>
+  </van-tabs>
+</van-sticky>

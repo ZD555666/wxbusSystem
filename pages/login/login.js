@@ -41,25 +41,6 @@ Page({
                     url: '../me/me',
                   })
                 }
-                // var openid = res.data.data.openid
-                // this.globalData.openId = openid
-                // // 将用户信息添加到数据库 （未授权时 数据库只有openId）接口isAuth是否用户已授权
-                // wx.request({
-                //   url: 'http://localhost:8080/wx/posden-spring-wx-user/saveOrUpdateUser',
-                //   method: 'POST',
-                //   data: {
-                //     openId: openid
-                //   },
-                //   success: (res) => {
-                //     // token 本地存储
-                //     wx.setStorageSync('token', res.data.data.token)
-                //     if (!res.data.data.userInfo.isAuth) {
-                //       wx.reLaunch({
-                //         url: '/pages/index/index',
-                //       })
-                //     }
-                //   }
-                // })
               },
               fail: (error) => {
                 console.log(error)

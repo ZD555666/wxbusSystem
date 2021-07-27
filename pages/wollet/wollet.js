@@ -1,14 +1,14 @@
 const app = getApp()
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-    assetsNum: '888',
-    assetsHideNum: '888',
+    assetsNum: '',
+    assetsHideNum: '',
     closedEye: '',
-    openEye: ''
+    openEye: '',
+    active: 1
   },
   
   eyes(){
@@ -32,18 +32,31 @@ Page({
   queryBalance(){
     wx.request({
       url: app.globalData.prefix+'/wx/queryBalance',
-      method:'POST',
+      // method:'POST',
       data:{
-        opid: ''
+        opId: wx.getStorageSync("loginUserInfo").openid
+      },
+      success:(res)=>{
+        // console.log(res)
+        this.setData({
+          assetsNum: (res.data.data)/100+'元',
+          assetsHideNum: (res.data.data)/100+'元'
+        })
       }
     })
+  },
+
+  onChange(event) {
+    wx.showToast({
+      title: `切换到标签 ${event.detail.name}`,
+      icon: 'none',
+    });
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
   },
 
   /**
