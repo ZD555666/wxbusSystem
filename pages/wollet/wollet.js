@@ -1,5 +1,6 @@
 const app = getApp()
 var QR = require("../../utils/qrcode.js");
+import Notify from '../../miniprogram_npm/@vant/weapp/notify/notify';
 Page({
   data: {
     assetsNum: '',
@@ -12,8 +13,10 @@ Page({
     actions: [
       { name: '5元', index: 5 }, { name: '10元', index: 10 }, { name: '50元', index: 50 }, { name: '100元', index: 100 }
     ],
-    amount:'',
-    showLoad:false,
+    amount: '',
+    showLoad: false,
+    orderNo: '',
+    inComeList:[],
     active: 1
   },
 
@@ -32,7 +35,7 @@ Page({
         url: '../login/login',
       })
     }
-    this.onPullDownRefresh()
+    this.queryBalance()
   },
 
   recharge() {
@@ -53,21 +56,50 @@ Page({
     this.createPay(event.detail.index);
   },
 
-  completePay(){
+  completePay() {
+    this.queryPay();
+  },
+
+  queryPay() {
     wx.request({
-      url: app.globalData.prefix + '/wx/query',
+      url: app.globalData.prefix + '/wx/queryPay',
       method: 'POST',
       data: {
         opId: wx.getStorageSync("loginUserInfo").openid,
-
+        orderNo: this.data.orderNo,
+        amount: this.data.amount
       },
-      success: (res)=>{
+      success: (res) => {
         console.log(res)
+        this.queryBalance();
+        let msg = res.data.msg;
+        Notify({ type: 'primary', message: msg == 'WAIT_BUYER_PAY' ? '等待支付' : (msg == 'TRADE_CLOSED' ? '交易关闭' : (msg == 'TRADE_SUCCESS' ? '支付成功' : (msg == 'TRADE_FINISHED' ? '该订单已支付' : '未扫码'))) });
       }
     })
   },
 
-  createPay(){
+  delPay() {
+    wx.request({
+      url: app.globalData.prefix + '/wx/delPay',
+      method: 'POST',
+      data: {
+        opId: wx.getStorageSync("loginUserInfo").openid,
+        orderNo: this.data.orderNo,
+      },
+      success: (res) => {
+        console.log(res)
+        Notify({ type: 'primary', message: res.data.msg == 'Business Failed' ? '未扫码' : (res.data.msg == 'Success' ? '支付取消' : 'wrong!') });
+      }
+    })
+    this.queryPay();
+  },
+
+  closePay() {
+    console.log("1111111111234")
+    this.delPay();
+  },
+
+  createPay() {
     var that = this;
     this.setData({
       showSrc: true,
@@ -80,10 +112,11 @@ Page({
         amount: this.data.amount,
         opId: wx.getStorageSync("loginUserInfo").openid
       },
-      success: (res)=>{
+      success: (res) => {
         console.log(res)
         var size = that.setCanvasSize(); //动态设置画布大小
         that.createQrCode(res.data.data.qrCode, "mycanvas", size.w, size.h);
+        that.setData({ orderNo: res.data.data.orderNo })
       }
     })
   },
@@ -132,14 +165,17 @@ Page({
    */
   onPullDownRefresh: function () {
     wx.showNavigationBarLoading();
-    var that = this;
+    this.queryBalance();
+  },
+
+  queryBalance() {
     wx.request({
       url: app.globalData.prefix + '/wx/queryBalance',
       data: {
         opId: wx.getStorageSync("loginUserInfo").openid
       },
-      success: (res)=>{
-        that.setData({
+      success: (res) => {
+        this.setData({
           assetsNum: (res.data.data) / 100 + '元',
           assetsHideNum: (res.data.data) / 100 + '元',
         })
@@ -147,6 +183,27 @@ Page({
         wx.stopPullDownRefresh();
       }
     })
+    this.queryInCome();
+  },
+
+  queryInCome() {
+    wx.request({
+      url: app.globalData.prefix + '/wx/queryInCome',
+      data: {
+        opId: wx.getStorageSync("loginUserInfo").openid
+      },
+      success: (res) => {
+        console.log(res)
+        this.setData({
+          inComeList: (res.data.data).reverse()
+        })
+      }
+    })
+  },
+
+  onUnload:function(){
+    this.queryPay();
+    this.delPay();
   },
 
   /**
@@ -155,5 +212,6 @@ Page({
   onReachBottom: function () {
 
   },
+
 
 })
