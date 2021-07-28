@@ -9,16 +9,43 @@
     </view>
   </view>
 </view>
+<view class="recharge"><van-button custom-style="background-color:rgb(60, 150, 250, 0.95)" round type="info" bind:click="recharge">立即充值</van-button></view>
 <van-sticky>
-  <van-tabs color="rgb(25, 137, 250)" animated='true' swipeable='true'>
-    <van-tab title="收入" swipeable>
-      <van-cell-group inset='true' clickable='true' >
-        <van-cell title="单元格" value="内容" link-type/>
-        <van-cell title="单元格" value="内容" clickable/>
-        <van-cell title="单元格" value="内容" inset/>
-        <van-cell title="单元格" value="内容" />
+  <van-tabs color="rgb(25, 137, 250)" animated swipeable>
+    <van-tab title="收入" >
+      <van-cell-group inset>
+        <van-cell center title="+21元" value="2021-07-25-20:00:00" label="余额21.00元"/>
       </van-cell-group>
     </van-tab>
-    <van-tab title="支出" swipeable>支出</van-tab>
+    <van-tab title="支出" >支出</van-tab>
   </van-tabs>
 </van-sticky>
+<van-action-sheet
+  show="{{ showCharge }}"
+  actions="{{ actions }}"
+  bind:close="onCloseCharge"
+  bind:select="onSelectCharge"
+  cancel-text="取消"
+/>
+<van-dialog
+  use-slot
+  title="请使用支付宝扫码"
+  show="{{ showSrc }}"
+  show-cancel-button
+  bind:confirm="completePay"
+  bind:close="closePay"
+>
+
+<view class="img-box">
+<van-image
+  width="10rem"
+  height="10rem"
+  fit="contain"
+  src="{{imagePath}}"
+  use-loading-slot
+/>
+<van-loading class="loading" wx:if="{{showLoad}}" type="spinner" vertical/>
+<van-icon name="replay" bind:click="createPay"/>
+</view>
+</van-dialog>
+<canvas style="width: 750rpx;height: 750rpx;background:#f1f1f1;position:fixed;top:999999rpx;" canvas-id="mycanvas" />
