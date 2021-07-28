@@ -1,30 +1,62 @@
-// pages/wollet/wollet.js
+const app = getApp()
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-
+    assetsNum: '',
+    assetsHideNum: '',
+    closedEye: '',
+    openEye: '',
+    active: 1
+  },
+  
+  eyes(){
+    this.setData({
+      assetsNum: this.data.assetsNum==='***'?this.data.assetsHideNum:'***'
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
     if (wx.getStorageSync("loginUserInfo") == '') {
       wx.redirectTo({
         url: '../login/login',
       })
     }
+    this.queryBalance()
+  },
+
+  queryBalance(){
+    wx.request({
+      url: app.globalData.prefix+'/wx/queryBalance',
+      // method:'POST',
+      data:{
+        opId: wx.getStorageSync("loginUserInfo").openid
+      },
+      success:(res)=>{
+        // console.log(res)
+        this.setData({
+          assetsNum: (res.data.data)/100+'元',
+          assetsHideNum: (res.data.data)/100+'元'
+        })
+      }
+    })
+  },
+
+  onChange(event) {
+    wx.showToast({
+      title: `切换到标签 ${event.detail.name}`,
+      icon: 'none',
+    });
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
   },
 
   /**

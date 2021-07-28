@@ -1,3 +1,9 @@
+page{
+  height: 100%;
+}
+#box{
+  height:35%;
+}
 #container{
   position: absolute;
   width: 100%;
@@ -7,6 +13,25 @@
   width: 90%;
   height: 25%;
   margin: 5% auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   border-radius: 5%/10%;
-  background: linear-gradient(60deg, rgb(25, 137, 250), rgba(118, 183, 248, 0.938)); 
+  background: linear-gradient(60deg, rgb(25, 137, 250), rgba(118, 183, 248, 0.87)); 
+}
+.assets{
+  color: #fff;
+  font-size: 18px;
+}
+.money{
+  margin-top: 5%;
+  color:white;
+  font-size:28px;
+}
+.head-first{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
 }
