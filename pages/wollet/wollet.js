@@ -53,6 +53,20 @@ Page({
     this.createPay(event.detail.index);
   },
 
+  completePay(){
+    wx.request({
+      url: app.globalData.prefix + '/wx/query',
+      method: 'POST',
+      data: {
+        opId: wx.getStorageSync("loginUserInfo").openid,
+
+      },
+      success: (res)=>{
+        console.log(res)
+      }
+    })
+  },
+
   createPay(){
     var that = this;
     this.setData({
@@ -69,7 +83,7 @@ Page({
       success: (res)=>{
         console.log(res)
         var size = that.setCanvasSize(); //动态设置画布大小
-        that.createQrCode(res.data.msg, "mycanvas", size.w, size.h);
+        that.createQrCode(res.data.data.qrCode, "mycanvas", size.w, size.h);
       }
     })
   },
@@ -91,11 +105,7 @@ Page({
   },
 
   createQrCode: function (url, canvasId, cavW, cavH) {
-    //调用插件中的draw方法，绘制二维码图片
     QR.api.draw(url, canvasId, cavW, cavH, this, this.canvasToTempImage);
-    
-    // setTimeout(() => { this.canvasToTempImage();},100);
-
   },
 
   //获取临时缓存照片路径，存入data中
