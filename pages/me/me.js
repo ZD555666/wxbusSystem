@@ -60,7 +60,7 @@ Component({
       console.log(e.detail.userInfo);
     },
 
-    toLogin: function () {
+    toLogin() {
       console.log(this.data.loginInfo)
       if (this.data.loginInfo == (undefined || '')) {
         wx.navigateTo({
@@ -68,7 +68,6 @@ Component({
         })
       }
     },
-
 
 
   },

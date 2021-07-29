@@ -1,2 +1,10 @@
 <canvas style="width: 750rpx;height: 750rpx;background:#f1f1f1;position:fixed;top:999999rpx;" canvas-id="mycanvas" />
 <van-notify id="van-notify" />
+<block wx:if="{{isPayOk!=''}}">
+  <button class="okbtn" bindtap='ok'>完成</button>
+  <view class="head">
+    <van-image class="headImg" round width="4rem" height="4rem" src="/images/bus.ico" />
+    <text style="color:#1989fa;margin:5px;font-size:18px">{{isPayOk}}</text>
+    <text style="font-size:30px;font-weight:bold">{{isPayOk=='支付成功'?'￥1.00元':''}}</text>
+  </view>
+</block>

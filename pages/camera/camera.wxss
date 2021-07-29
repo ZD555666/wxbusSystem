@@ -1,1 +1,21 @@
-/* pages/camera/camera.wxss */
+.head {
+  /* text-align: center; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 5px;
+}
+
+.okbtn {
+  color: #1989fa;
+  text-align: right;
+  background-color: transparent;
+  border-color: transparent;
+  border: none;
+}
+
+.okbtn::after {
+  border: none;
+  /* border-color: transparent; */
+}

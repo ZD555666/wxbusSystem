@@ -17,6 +17,7 @@ Page({
     showLoad: false,
     orderNo: '',
     inComeList:[],
+    outComeList:[],
     active: 1
   },
 
@@ -91,7 +92,7 @@ Page({
         Notify({ type: 'primary', message: res.data.msg == 'Business Failed' ? '未扫码' : (res.data.msg == 'Success' ? '支付取消' : 'wrong!') });
       }
     })
-    this.queryPay();
+    // this.queryPay();
   },
 
   closePay() {
@@ -166,6 +167,7 @@ Page({
   onPullDownRefresh: function () {
     wx.showNavigationBarLoading();
     this.queryBalance();
+    this.outCome()
   },
 
   queryBalance() {
@@ -201,7 +203,26 @@ Page({
     })
   },
 
+  outCome(){
+    console.log("asasas1")
+    wx.request({
+      url: app.globalData.prefix + '/wx/queryOutCome',
+      data: {
+        opId: wx.getStorageSync("loginUserInfo").openid
+      },
+      success: (res) => {
+        console.log(res)
+        this.setData({
+          outComeList: (res.data.data).reverse()
+        })
+      }
+    })
+  },
+
   onUnload:function(){
+    // this.setData({
+    //   amount: 0
+    // })
     this.queryPay();
     this.delPay();
   },

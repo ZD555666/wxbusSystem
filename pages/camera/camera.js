@@ -5,7 +5,8 @@ Page({
 
   data: {
     scanCodeMsg: '',
-    imagePath: ''
+    imagePath: '',
+    isPayOk: ''
   },
 
   scanCode() {
@@ -34,14 +35,15 @@ Page({
         Notify({
           type: 'primary',
           message: res.data.msg == 'paySuccess' ? '支付成功' : "支付失败",
-          // onClose: wx.switchTab({
-          //   url: '../me/me'
-          // })
         });
-
+        this.setData({ isPayOk: res.data.msg == 'paySuccess' ? '支付成功' : "支付失败" })
+        // wx.switchTab({
+        //   url: '../me/me',
+        // })
       }
     })
   },
+
 
   reqScanCode() {
     wx.request({
@@ -107,6 +109,12 @@ Page({
       complete(res) {
         console.log(res)
       }
+    })
+  },
+  
+  ok(){
+    wx.switchTab({
+      url: '../me/me',
     })
   },
 

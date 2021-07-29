@@ -5,7 +5,7 @@
         <text class="assets" space="emsp">总资产(元) </text>
         <van-icon size='22px' color="white" name="{{assetsNum=='***'?'closed-eye':'eye-o'}}" bind:click="eyes" />
       </view>
-      <view class="money">{{assetsNum}}</view>
+      <view class="money">￥{{assetsNum}}</view>
     </view>
   </view>
 </view>
@@ -15,14 +15,19 @@
 </view>
 <scroll-view scroll-y="true" style="height:50%">
   <van-sticky>
-    <van-tabs color="rgb(25, 137, 250)" animated swipeable>
+    <van-tabs color="rgb(25, 137, 250)" animated swipeable bind:click="outCome">
       <van-tab title="收入" >
         <van-cell-group inset>
           <van-cell wx:key="unique" wx:for="{{inComeList}}" center title="充值：{{(item.record)/100}}元"
             value="{{item.recordTime}}" />
         </van-cell-group>
       </van-tab>
-      <van-tab title="支出">支出</van-tab>
+      <van-tab title="支出">
+        <van-cell-group inset>
+          <van-cell wx:key="unique" wx:for="{{outComeList}}" center title="付款：{{(item.record)/100}}元"
+            value="{{item.recordTime}}" />
+        </van-cell-group>
+      </van-tab>
     </van-tabs>
   </van-sticky>
 </scroll-view>
