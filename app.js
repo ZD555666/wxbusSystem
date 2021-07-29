@@ -14,8 +14,8 @@ App({
   },
   globalData: {
     userInfo: null,
-    prefix: 'http://localhost:8080'
+    // prefix: 'http://localhost:8080'
     // prefix: 'http://192.168.31.49:8080'
-    // prefix: 'http://192.168.177.211:8080'
+    prefix: 'http://192.168.88.211:8080'
   }
 })

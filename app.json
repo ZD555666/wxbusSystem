@@ -9,6 +9,7 @@
     "pages/phone/phone",
     "pages/myinfo/myinfo",
     "pages/wollet/wollet",
+    "pages/camera/camera",
     "custom-tab-bar/index",
     "pages/search/search"
   ],
