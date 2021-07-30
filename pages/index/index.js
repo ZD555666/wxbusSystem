@@ -20,8 +20,7 @@ Component({
           wx.request({
             url: "http://api.map.baidu.com/location/ip?ak=c5Z34MLBSy9rlLKezAjovlP20WT1bItG&ip=" + myIp + "&coor=bd09ll",
             success: reps => {
-              app.globalData.nowCity=reps.data.content.address_detail.city
-             console.log(app.globalData.nowCity)
+              app.globalData.nowCity = reps.data.content.address_detail.city
               console.log(reps.data)
               console.log(myIp)
               console.log("http://api.map.baidu.com/location/ip?ak=c5Z34MLBSy9rlLKezAjovlP20WT1bItG&ip=" + myIp + "&coor=bd09ll")
@@ -35,7 +34,8 @@ Component({
     }
   },
   data: {
-    searchValue: ''
+    searchValue: '',
+
   },
   methods: {
     onClick(event) {
@@ -59,20 +59,22 @@ Component({
       })
     },
 
-    onSearch(){
-      if(this.data.searchValue!=''){
-        
+    onSearch() {
+      if (this.data.searchValue != '') {
+
       }
     },
 
-    queryStationOrRoad(){
+    queryStationOrRoad() {
       wx.request({
         url: app.globalData.prefix + '/wx/queryStationOrRoad',
+        method:'POST',
         data: {
-         
+          nowCity: app.globalData.nowCity,
+          info: this.data.searchValue
         },
         success: res => {
-          
+          console.log(res)
         }
       })
     }
