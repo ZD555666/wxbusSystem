@@ -1,3 +1,4 @@
+const app = getApp()
 Component({
   pageLifetimes: {
     show() {
@@ -19,6 +20,8 @@ Component({
           wx.request({
             url: "http://api.map.baidu.com/location/ip?ak=c5Z34MLBSy9rlLKezAjovlP20WT1bItG&ip=" + myIp + "&coor=bd09ll",
             success: reps => {
+              app.globalData.nowCity=reps.data.content.address_detail.city
+             console.log(app.globalData.nowCity)
               console.log(reps.data)
               console.log(myIp)
               console.log("http://api.map.baidu.com/location/ip?ak=c5Z34MLBSy9rlLKezAjovlP20WT1bItG&ip=" + myIp + "&coor=bd09ll")
@@ -58,8 +61,20 @@ Component({
 
     onSearch(){
       if(this.data.searchValue!=''){
-        console.log(111)
+        
       }
+    },
+
+    queryStationOrRoad(){
+      wx.request({
+        url: app.globalData.prefix + '/wx/queryStationOrRoad',
+        data: {
+         
+        },
+        success: res => {
+          
+        }
+      })
     }
 
   }

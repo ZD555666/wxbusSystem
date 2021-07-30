@@ -1,5 +1,4 @@
 <view>
-
   <van-search
   value="{{ value }}"
   placeholder="搜索地点、站点"
