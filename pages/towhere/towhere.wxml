@@ -7,7 +7,7 @@
       bind:click-icon="onClickIcon" 
       bind:input="onChange"  
       bind:focus = "focus"/>
-
+      
       <van-field value="{{ toWhere }}" 
       left-icon="location" 
       right-icon="search" 

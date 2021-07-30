@@ -12,6 +12,11 @@ Component({
   },
   pageLifetimes: {
     show: function() {
+      if(this.data.page == 1){
+        wx.showLoading({
+          title: '加载中',
+        })
+      }
       var _this = this;
       // 页面被展示
       _this.onRequest();
@@ -34,7 +39,6 @@ Component({
       var that = this;
       (this.data.page)++;
       that.onRequest();
-      console.log(123)
     },
     onRequest(){
       var _this = this;
@@ -45,6 +49,7 @@ Component({
         },
         success:reps=>{
          if(_this.data.page == 1){
+          wx.hideLoading()
           _this.setData({
         		dataList: reps.data,
          	})

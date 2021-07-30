@@ -1,10 +1,19 @@
 <view>
-
   <van-search
   value="{{ value }}"
   placeholder="搜索地点、站点"
-  bind:change=""/> 
+  use-action-slot
+  bind:change="onSearch" 
+  >
+  <view slot="action" bind:tap="onSearch">搜索</view>
+  </van-search>
   <view class="histroy">
-   <text >搜索历史</text>
+    <text wx:if="{{searchValue == ''}}">搜索历史</text>
   </view>
+  <view>
+    <van-cell-group wx:for="{{roadList}}" wx:key="index">
+      <van-cell title="{{item}}" bind:click="onClick"/>
+    </van-cell-group>
+  </view>
+
 </view>

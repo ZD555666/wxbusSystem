@@ -54,6 +54,11 @@ Component({
       wx.reLaunch({
         url: '/pages/chooseCity/chooseCity',
       })
+    },
+    goSearch(){
+      wx.reLaunch({
+        url: '/pages/search/search',
+      })
     }
   }
 })

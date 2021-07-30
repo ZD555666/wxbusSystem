@@ -1,0 +1,6 @@
+<view wx:for="{{bulletinList}}">
+    <van-notice-bar class="noticebar"
+    left-icon="volume-o"
+    text="{{item.title}}"
+    />
+</view>
