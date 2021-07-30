@@ -1,0 +1,21 @@
+.out{
+  background-color: honeydew;
+  border: 2px solid #379082;
+  border-radius: 20px;
+  padding: 10px 10px;
+  margin:10px;
+  height: 200px;
+}
+
+.inside{
+  border: 2px solid #6ed1c2;
+  height: 150px;
+}
+.out1{
+  background-color: honeydew;
+  border: 2px solid #379082;
+  border-radius: 20px;
+  padding: 10px 10px;
+  margin:10px;
+  height: 130px;
+}

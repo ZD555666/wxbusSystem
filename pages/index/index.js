@@ -59,6 +59,7 @@ Component({
       })
     },
 
+
     onSearch() {
       if (this.data.searchValue != '') {
 
@@ -76,6 +77,11 @@ Component({
         success: res => {
           console.log(res)
         }
+      })
+      },
+    goSearch(){
+      wx.reLaunch({
+        url: '/pages/search/search',
       })
     }
 

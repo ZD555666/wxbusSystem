@@ -55,7 +55,6 @@ Component({
     getUserInfo(e) {
       console.log(e.detail);
     },
-
     onGetUserInfo(e) {
       console.log(e.detail.userInfo);
     },
