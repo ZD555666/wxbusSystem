@@ -10,6 +10,7 @@
     "pages/myinfo/myinfo",
     "pages/wollet/wollet",
     "pages/camera/camera",
+    "pages/siteDetail/siteDetail",
     "custom-tab-bar/index",
     "pages/search/search"
   ],
@@ -45,7 +46,8 @@
     "van-tabs": "@vant/weapp/tabs/index",
     "van-slider": "@vant/weapp/slider/index",
     "van-picker": "@vant/weapp/picker/index",
-    "van-popup": "@vant/weapp/popup/index"
+    "van-popup": "@vant/weapp/popup/index",
+    "van-empty": "@vant/weapp/empty/index"
   },
 
   "tabBar":{

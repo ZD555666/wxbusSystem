@@ -1,82 +1,98 @@
 const app = getApp()
+let bmap = require('../../utils/bmap-wx.min.js');
 Component({
   pageLifetimes: {
     show() {
       this.getTabBar().setData({
         active: 0
       });
-      var _this = this;
-      var myIp;
-      wx.request({
-        url: 'https://pv.sohu.com/cityjson?ie=utf-8',
-        success: reps => {
-          var aaa = reps.data.split(' ');
-          var bbb = aaa[4]
-          var ccc = bbb.replace('"', '')
-          var ddd = ccc.replace('"', '')
-          var ip = ddd.replace(',', '')
-          myIp = ip;
-          console.log(myIp);
-          wx.request({
-            url: "http://api.map.baidu.com/location/ip?ak=c5Z34MLBSy9rlLKezAjovlP20WT1bItG&ip=" + myIp + "&coor=bd09ll",
-            success: reps => {
-              app.globalData.nowCity = reps.data.content.address_detail.city
-              console.log(reps.data)
-              console.log(myIp)
-              console.log("http://api.map.baidu.com/location/ip?ak=c5Z34MLBSy9rlLKezAjovlP20WT1bItG&ip=" + myIp + "&coor=bd09ll")
-              _this.setData({
-                name: reps.data.content.address_detail.city
-              })
-            }
-          })
-        }
-      })
+      this.getMyLocation();
+
     }
   },
   data: {
-    searchValue: '',
-
+    ak: "5sqq8W5B4v0ukIInelAaD8jW16Cz0zXj",
+    markers: [],
+    longitude: '',
+    latitude: '',
+    address: '',
+    cityInfo: {},
+    nearStation: [],
+    currentValue: 50,
+    isHide: false
   },
   methods: {
-    onClick(event) {
-      wx.request({
-        url: 'http://localhost:8888/test',
-        data: {
-          name: "张三",
-          age: 50
-        },
-        success: reps => {
-          console.log(reps.data)
-          this.setData({
-            name: reps.data.content.address
-          })
-        }
-      })
-    },
     onLocation() {
       wx.reLaunch({
         url: '/pages/chooseCity/chooseCity',
       })
     },
 
-    onSearch() {
-      if (this.data.searchValue != '') {
-
+    getMyLocation() {
+      var that = this;
+      let BMap = new bmap.BMapWX({
+        ak: that.data.ak
+      });
+      let fail = function (data) {
+        console.log(data);
+      };
+      let success = function (data) {
+        console.log(data);
+        let wxMarkerData = data.wxMarkerData;
+        that.setData({
+          markers: wxMarkerData,
+          latitude: wxMarkerData[0].latitude,
+          longitude: wxMarkerData[0].longitude,
+          address: wxMarkerData[0].address,
+          cityInfo: data.originalData.result.addressComponent
+        });
+        app.globalData.markers = wxMarkerData,
+          app.globalData.latitude = wxMarkerData[0].latitude,
+          app.globalData.longitude = wxMarkerData[0].longitude,
+          app.globalData.address = wxMarkerData[0].address,
+          app.globalData.cityInfo = data.originalData.result.addressComponent
+        that.queryNearStation();
       }
+      BMap.regeocoding({
+        fail: fail,
+        success: success
+      });
+
     },
 
-    queryStationOrRoad() {
+    queryNearStation() {
       wx.request({
-        url: app.globalData.prefix + '/wx/queryStationOrRoad',
-        method:'POST',
+        url: app.globalData.prefix + '/wx/queryNearStation',
+        method: 'POST',
         data: {
-          nowCity: app.globalData.nowCity,
-          info: this.data.searchValue
+          longitude: this.data.longitude,
+          latitude: this.data.latitude,
+          cityInfo: this.data.cityInfo.city,
+          distance: this.data.currentValue
         },
-        success: res => {
+        success: (res) => {
           console.log(res)
+          this.setData({
+            nearStation: res.data.data
+          })
+
         }
       })
+    },
+
+    onDrag(event) {
+      this.setData({
+        currentValue: event.detail
+      })
+      this.queryNearStation()
+    },
+
+    choseStation(event) {
+      let value = event.currentTarget.dataset.value
+      wx.navigateTo({
+        url: '/pages/siteDetail/siteDetail?stationId=' + value,
+      })
+
     }
 
   }
