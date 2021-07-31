@@ -1,10 +1,26 @@
 <wxs module="filters" src="filters.wxs"></wxs>
 <view>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+  <van-search model:value="{{ searchValue }}" shape="round" placeholder="查站点、线路" 
+  bind:search="onSearch" bind:change="onSearch" bind:focus="goSearch"/>
+ <view class="location">
+  <van-icon bindtap="onLocation" name="location"  />
+  <text bindtap="onLocation">当前城市坐标：</text>
+  <text >{{name}}</text>
+ </view>
+=======
+>>>>>>> master
   <view class="location" bindtap="onLocation">
     <van-icon name="location" />
     <text>当前位置：{{address}}</text>
   </view>
   <van-search shape="round" placeholder="查站点、线路" bind:focus="toIndexSearch" />
+<<<<<<< HEAD
+=======
+>>>>>>> gjw
+>>>>>>> master
   <view class="banner">
     <swiper indicator-dots indicator-color="rgba(255,255,255,0.5)" indicator-active-color="#fff" circular autoplay
       interval="2500" class="ad">

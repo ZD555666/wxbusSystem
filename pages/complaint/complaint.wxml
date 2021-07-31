@@ -1,0 +1,35 @@
+<view>
+<view class="out">
+  <van-panel  title="问题和建议:" >
+    <view class="inside">
+    <textarea cols="35" rows="15" 
+    placeholder="请留下您的宝贵意见，我们将努力改进"
+    model:value="{{textareaValue}}"></textarea>
+    </view>
+  </van-panel>
+</view>
+<view class="out1">
+  <van-panel  title="添加图片(最多3张)" >
+    <view class="inside1">
+      <van-uploader max-count="3" 
+      file-list="{{ fileList }}" 
+      preview-image="{{true}}" 
+      multiple="{{true}}" 
+      bind:after-read="afterRead" 
+      bind:delete="deleteFile"
+      deletable="{{ true }}"
+      />
+    </view>
+  </van-panel>
+</view>
+<van-cell-group>
+  <van-field
+    model:value="{{ value }}"
+    placeholder="请输入用户名"
+    border="{{ false }}"
+    label="联系方式:"
+  />
+</van-cell-group>
+<van-button type="primary" block bind:click="ButtonClick">提交</van-button>
+</view>
+

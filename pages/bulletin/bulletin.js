@@ -1,33 +1,17 @@
-
+// pages/bulletin/bulletin.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    searchValue:'',
-    roadList:[]
+    bulletinList:[
+      {title:"在代码阅读过程中人们说脏话的频率是衡量代码质量的唯一标准。"},
+      {title:"在代码阅读过程中人们说脏话的频率是衡量代码质量的唯一标准。"},
+      {title:"在代码阅读过程中人们说脏话的频率是衡量代码质量的唯一标准。"}
+    ]
   },
-  onClick(){
-    wx.reLaunch({
-      url: 'pages/road/road',
-    })
-  },
-  onSearch(event){
-    var _this = this;
-    _this.data.roadList = [];
-    wx.request({
-      url: 'http://localhost:8080/wx/searchRoad',
-      data:{
-        value:event.detail,
-      },
-      success:reps=>{
-        _this.setData({
-          roadList:reps.data
-        })
-      }
-    })
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */

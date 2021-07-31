@@ -1,33 +1,13 @@
-
+// pages/road/road.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    searchValue:'',
-    roadList:[]
+
   },
-  onClick(){
-    wx.reLaunch({
-      url: 'pages/road/road',
-    })
-  },
-  onSearch(event){
-    var _this = this;
-    _this.data.roadList = [];
-    wx.request({
-      url: 'http://localhost:8080/wx/searchRoad',
-      data:{
-        value:event.detail,
-      },
-      success:reps=>{
-        _this.setData({
-          roadList:reps.data
-        })
-      }
-    })
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */
