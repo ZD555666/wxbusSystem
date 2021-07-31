@@ -58,7 +58,6 @@ Component({
         fail: fail,
         success: success
       });
-
     },
 
     queryNearStation() {

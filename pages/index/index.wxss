@@ -28,7 +28,6 @@ page {
 }
 
 .nearText {
-
   font-size: 16px;
   color: rgb(105, 105, 105);
   font-weight: 600;
