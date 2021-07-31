@@ -1,4 +1,6 @@
+<wxs module="filters" src="filters.wxs"></wxs>
 <view>
+<<<<<<< HEAD
   <van-search model:value="{{ searchValue }}" shape="round" placeholder="查站点、线路" 
   bind:search="onSearch" bind:change="onSearch" bind:focus="goSearch"/>
  <view class="location">
@@ -6,6 +8,13 @@
   <text bindtap="onLocation">当前城市坐标：</text>
   <text >{{name}}</text>
  </view>
+=======
+  <view class="location" bindtap="onLocation">
+    <van-icon name="location" />
+    <text>当前位置：{{address}}</text>
+  </view>
+  <van-search shape="round" placeholder="查站点、线路" bind:focus="toIndexSearch" />
+>>>>>>> gjw
   <view class="banner">
     <swiper indicator-dots indicator-color="rgba(255,255,255,0.5)" indicator-active-color="#fff" circular autoplay
       interval="2500" class="ad">
@@ -33,19 +42,20 @@
     </swiper>
   </view>
   <view>
-    <text class="text1" wx:if="{{name == '厦门市'}}">附近的站点：</text>
-    <text class="text1" wx:else>市中心：</text>
+    <view class="nearText"><text>附近{{currentValue*10}}m的站点：</text></view>
+    <view class="distance"><van-slider value="{{currentValue}}" step="10" bind:change="onDrag" /></view>
     <view class="station">
       <van-cell-group inset border>
-        <van-cell icon="map-marked" title="市行政服务中心站" value="300m" />
-        <van-cell title="18路" value="非营业时间" label="方向：黄厝公交场站" />
-      </van-cell-group>
-      <van-cell-group inset border>
-        <van-cell icon="map-marked" title="金山洪塘站" value="300m" />
-      </van-cell-group>
-      <van-cell-group inset border>
-        <van-cell icon="map-marked" title="万达广场站" value="300m" />
+        <block wx:key="unique" wx:for="{{nearStation}}">
+          <van-cell bind:click="choseStation" is-link icon="map-marked" title="{{item.stationName}}" value="{{filters.toFix(item.distance)}}m" data-value="{{item.stationId}}"/>
+        </block>
       </van-cell-group>
     </view>
   </view>
+</view>
+<view>
+  <view>经度：{{longitude}}</view>
+  <view>纬度：{{latitude}}</view>
+  <view>地址：{{address}}</view>
+  <view>城市：{{cityInfo.city}}</view>
 </view>
