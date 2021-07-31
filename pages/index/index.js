@@ -28,12 +28,6 @@ Component({
       })
     },
 
-<<<<<<< HEAD
-
-    onSearch() {
-      if (this.data.searchValue != '') {
-
-=======
     getMyLocation() {
       var that = this;
       let BMap = new bmap.BMapWX({
@@ -58,7 +52,7 @@ Component({
           app.globalData.address = wxMarkerData[0].address,
           app.globalData.cityInfo = data.originalData.result.addressComponent
         that.queryNearStation();
->>>>>>> gjw
+
       }
       BMap.regeocoding({
         fail: fail,
@@ -85,13 +79,13 @@ Component({
 
         }
       })
-<<<<<<< HEAD
-      },
-    goSearch(){
+
+    },
+    goSearch() {
       wx.reLaunch({
         url: '/pages/search/search',
       })
-=======
+
     },
 
     onDrag(event) {
@@ -107,7 +101,6 @@ Component({
         url: '/pages/siteDetail/siteDetail?stationId=' + value,
       })
 
->>>>>>> gjw
     }
 
   }

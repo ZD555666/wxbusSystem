@@ -52,13 +52,8 @@
     "van-slider": "@vant/weapp/slider/index",
     "van-picker": "@vant/weapp/picker/index",
     "van-popup": "@vant/weapp/popup/index",
-<<<<<<< HEAD
     "van-notice-bar": "@vant/weapp/notice-bar/index",
-    "van-uploader": "@vant/weapp/uploader/index"
-  
-=======
     "van-empty": "@vant/weapp/empty/index"
->>>>>>> gjw
   },
 
   "tabBar":{
