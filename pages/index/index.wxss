@@ -38,11 +38,6 @@ page {
 .station van-cell {
   color: rgb(15, 131, 231);
 }
-<<<<<<< HEAD
 .distance{
-=======
-
-.distance {
->>>>>>> gjw
   padding: 0 3% 4%;
 }

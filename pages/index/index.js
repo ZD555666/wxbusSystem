@@ -52,42 +52,6 @@ Component({
           app.globalData.address = wxMarkerData[0].address,
           app.globalData.cityInfo = data.originalData.result.addressComponent
         that.queryNearStation();
-<<<<<<< HEAD
-=======
-
-      }
-      BMap.regeocoding({
-        fail: fail,
-        success: success
-      });
-
-    },
-
-    getMyLocation() {
-      var that = this;
-      let BMap = new bmap.BMapWX({
-        ak: that.data.ak
-      });
-      let fail = function (data) {
-        console.log(data);
-      };
-      let success = function (data) {
-        console.log(data);
-        let wxMarkerData = data.wxMarkerData;
-        that.setData({
-          markers: wxMarkerData,
-          latitude: wxMarkerData[0].latitude,
-          longitude: wxMarkerData[0].longitude,
-          address: wxMarkerData[0].address,
-          cityInfo: data.originalData.result.addressComponent
-        });
-        app.globalData.markers = wxMarkerData,
-          app.globalData.latitude = wxMarkerData[0].latitude,
-          app.globalData.longitude = wxMarkerData[0].longitude,
-          app.globalData.address = wxMarkerData[0].address,
-          app.globalData.cityInfo = data.originalData.result.addressComponent
-        that.queryNearStation();
->>>>>>> gjw
 
       }
       BMap.regeocoding({
