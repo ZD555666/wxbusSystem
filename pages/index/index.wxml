@@ -32,12 +32,17 @@
     </swiper>
   </view>
   <view>
-    <view class="nearText"><text>附近{{currentValue*10}}m的站点：</text></view>
-    <view class="distance"><van-slider value="{{currentValue}}" step="10" bind:change="onDrag" /></view>
+    <view class="nearText"><text>附近{{currentValue*100}}m的站点：</text></view>
+    <view class="distance">
+      <van-slider value="{{currentValue}}" step="10" bind:change="onDrag" />
+    </view>
     <view class="station">
       <van-cell-group inset border>
         <block wx:key="unique" wx:for="{{nearStation}}">
-          <van-cell bind:click="choseStation" is-link icon="map-marked" title="{{item.stationName}}" value="{{filters.toFix(item.distance)}}m" data-value="{{item.stationId}}"/>
+
+          <van-cell bind:click="choseStation" is-link icon="map-marked" title="{{item.stationName}}"
+            value="{{filters.toFix(item.distance)}}m" data-value="{{item.stationId}}"
+            data-name="{{item.stationName}}" />
         </block>
       </van-cell-group>
     </view>

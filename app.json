@@ -53,7 +53,9 @@
     "van-picker": "@vant/weapp/picker/index",
     "van-popup": "@vant/weapp/popup/index",
     "van-notice-bar": "@vant/weapp/notice-bar/index",
-    "van-empty": "@vant/weapp/empty/index"
+    "van-empty": "@vant/weapp/empty/index",
+    "van-uploader": "@vant/weapp/uploader/index"
+
   },
 
   "tabBar":{

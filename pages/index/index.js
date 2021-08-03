@@ -58,6 +58,39 @@ Component({
         fail: fail,
         success: success
       });
+
+    },
+
+    getMyLocation() {
+      var that = this;
+      let BMap = new bmap.BMapWX({
+        ak: that.data.ak
+      });
+      let fail = function (data) {
+        console.log(data);
+      };
+      let success = function (data) {
+        console.log(data);
+        let wxMarkerData = data.wxMarkerData;
+        that.setData({
+          markers: wxMarkerData,
+          latitude: wxMarkerData[0].latitude,
+          longitude: wxMarkerData[0].longitude,
+          address: wxMarkerData[0].address,
+          cityInfo: data.originalData.result.addressComponent
+        });
+        app.globalData.markers = wxMarkerData,
+          app.globalData.latitude = wxMarkerData[0].latitude,
+          app.globalData.longitude = wxMarkerData[0].longitude,
+          app.globalData.address = wxMarkerData[0].address,
+          app.globalData.cityInfo = data.originalData.result.addressComponent
+        that.queryNearStation();
+
+      }
+      BMap.regeocoding({
+        fail: fail,
+        success: success
+      });
     },
 
     queryNearStation() {
@@ -68,7 +101,7 @@ Component({
           longitude: this.data.longitude,
           latitude: this.data.latitude,
           cityInfo: this.data.cityInfo.city,
-          distance: this.data.currentValue
+          distance: this.data.currentValue*10
         },
         success: (res) => {
           console.log(res)
@@ -96,8 +129,9 @@ Component({
 
     choseStation(event) {
       let value = event.currentTarget.dataset.value
+      let name = event.currentTarget.dataset.name
       wx.navigateTo({
-        url: '/pages/siteDetail/siteDetail?stationId=' + value,
+        url: '/pages/siteDetail/siteDetail?stationId=' + value+'&stationName='+ name,
       })
 
     }
