@@ -1,1 +1,7 @@
-<text>{{stationId}}</text>
+<wxs module="filters" src="../index/filters.wxs"></wxs>
+<van-cell-group inset border>
+  <block wx:key="index" wx:for="{{distanceAndSpeed}}">
+    <van-cell center is-link icon="map-marked" title="{{item.busNo}}" label="方向 {{item.endStation}}" value="{{item.busNo}}"/>
+    <view>{{filters.toFix(item.distanceTime)}},{{filters.toFix(item.distance)}}</view>
+  </block>
+</van-cell-group>

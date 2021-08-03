@@ -101,7 +101,7 @@ Component({
           longitude: this.data.longitude,
           latitude: this.data.latitude,
           cityInfo: this.data.cityInfo.city,
-          distance: this.data.currentValue
+          distance: this.data.currentValue*10
         },
         success: (res) => {
           console.log(res)
@@ -129,8 +129,9 @@ Component({
 
     choseStation(event) {
       let value = event.currentTarget.dataset.value
+      let name = event.currentTarget.dataset.name
       wx.navigateTo({
-        url: '/pages/siteDetail/siteDetail?stationId=' + value,
+        url: '/pages/siteDetail/siteDetail?stationId=' + value+'&stationName='+ name,
       })
 
     }

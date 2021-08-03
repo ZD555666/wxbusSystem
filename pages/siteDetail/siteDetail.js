@@ -1,20 +1,61 @@
-// pages/siteDetail/siteDetail.js
+const app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    stationId: ''
+    stationId: '',
+    busToWhere: [],
+    distanceAndSpeed: []
+  },
+
+  queryDetail() {
+    wx.request({
+      url: app.globalData.prefix + '/wx/queryDetail',
+      method: 'POST',
+      data: {
+        stationId: parseInt(this.data.stationId),
+        cityName: app.globalData.cityInfo.city
+      },
+      success: (res) => {
+        console.log(res)
+        this.setData({
+          busToWhere: res.data.data
+        })
+        this.queryBusDetailInfo();
+      }
+    })
+  },
+
+  queryBusDetailInfo() {
+    wx.request({
+      url: app.globalData.prefix + '/wx/queryBusDetailInfo',
+      method: 'POST',
+      data: {
+        busDetailInfo: this.data.busToWhere,
+        cityName: app.globalData.cityInfo.city
+      },
+      success: (res) => {
+        console.log(res)
+        this.setData({
+          distanceAndSpeed: res.data.data
+        })
+      }
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.setNavigationBarTitle({
+      title: options.stationName
+    })
     this.setData({
       stationId: options.stationId
     })
+    this.queryDetail();
   },
 
   /**
