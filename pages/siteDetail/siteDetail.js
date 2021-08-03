@@ -7,7 +7,8 @@ Page({
   data: {
     stationId: '',
     busToWhere: [],
-    distanceAndSpeed: []
+    distanceAndSpeed: [],
+    clickStation: ''
   },
 
   queryDetail() {
@@ -39,7 +40,8 @@ Page({
       success: (res) => {
         console.log(res)
         this.setData({
-          distanceAndSpeed: res.data.data
+          distanceAndSpeed: res.data.data,
+          clickStation: this.data.clickStation
         })
       }
     })
@@ -53,7 +55,8 @@ Page({
       title: options.stationName
     })
     this.setData({
-      stationId: options.stationId
+      stationId: options.stationId,
+      clickStation: options.stationName
     })
     this.queryDetail();
   },
