@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-/* pages/siteDetail/siteDetail.wxss */
-=======
->>>>>>> master
 .map_container{ 
   height: 420px; 
   width: 100%; 
@@ -13,15 +7,3 @@
   height: 100%; 
   width: 100%; 
 }
-
-.rgc_info {
-  padding: 5px;
-}
-.rgc_info {
-  display: block;
-<<<<<<< HEAD
-}
-=======
-}
->>>>>>> gjw
->>>>>>> master

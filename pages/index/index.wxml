@@ -31,7 +31,7 @@
       </swiper-item>
     </swiper>
   </view>
-  <view>
+  <view style="height: 600px">
     <view class="nearText"><text>附近{{currentValue*100}}m的站点：</text></view>
     <view class="distance">
       <van-slider value="{{currentValue}}" step="10" bind:change="onDrag" />
@@ -39,41 +39,13 @@
     <view class="station">
       <van-cell-group inset border>
         <block wx:key="unique" wx:for="{{nearStation}}">
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-
           <van-cell bind:click="choseStation" is-link icon="map-marked" title="{{item.stationName}}"
-            value="{{filters.toFix(item.distance)}}m" data-value="{{item.stationId}}"
-            data-name="{{item.stationName}}" />
-=======
->>>>>>> master
-          <van-cell bind:click="choseStation" is-link icon="map-marked" title="{{item.stationName}}"
-            value="{{filters.toFix(item.distance)}}m" data-value="{{item.stationId}}"
-            data-name="{{item.stationName}}" data-xpoint="{{item.xpoint}}" data-ypoint="{{item.ypoint}}"
-            bindlongpress="longpress" bindtouchstart="touchStart" bindtouchend="touchEnd"/>
-<<<<<<< HEAD
-=======
->>>>>>> gjw
->>>>>>> master
+            value="{{filters.toFix(item.distance)}}m" data-value="{{item.stationId}}" data-name="{{item.stationName}}"
+            data-xpoint="{{item.xpoint}}" data-ypoint="{{item.ypoint}}" bindlongpress="longpress"
+            bindtouchstart="touchStart" bindtouchend="touchEnd" />
         </block>
       </van-cell-group>
     </view>
   </view>
 </view>
-<view>
-  <view>经度：{{longitude}}</view>
-  <view>纬度：{{latitude}}</view>
-  <view>地址：{{address}}</view>
-  <view>城市：{{cityInfo.city}}</view>
-<<<<<<< HEAD
-</view>
 <van-action-sheet show="{{ showOpt }}" actions="{{ actions }}" bind:close="onCloseOpt" bind:select="onSelectOpt" />
-=======
-<<<<<<< HEAD
-</view>
-=======
-</view>
-<van-action-sheet show="{{ showOpt }}" actions="{{ actions }}" bind:close="onCloseOpt" bind:select="onSelectOpt" />
->>>>>>> gjw
->>>>>>> master
