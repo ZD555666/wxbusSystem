@@ -7,23 +7,17 @@ Component({
         active: 0
       });
       this.getMyLocation();
-<<<<<<< HEAD
-
-    }
-  },
-  data: {
-=======
     },
     hide() {
       this.setData({ showOpt: false });
     },
   },
+
   data: {
     actions: [
       { name: '收藏' }, { name: '分享', openType: 'share' }, { name: 'cancle' },
     ],
     showOpt: false,
->>>>>>> gjw
     ak: "5sqq8W5B4v0ukIInelAaD8jW16Cz0zXj",
     markers: [],
     longitude: '',
@@ -32,23 +26,17 @@ Component({
     cityInfo: {},
     nearStation: [],
     currentValue: 50,
-<<<<<<< HEAD
-    isHide: false
-=======
     isHide: false,
     touchStartTime: 0,
     touchEndTime: 0,
     lastTapTime: 0,
     lastTapTimeoutFunc: null,
     selectCollectStation: ''
->>>>>>> gjw
   },
   methods: {
     onLocation() {
       wx.reLaunch({
         url: '/pages/chooseCity/chooseCity',
-<<<<<<< HEAD
-=======
       })
     },
 
@@ -90,7 +78,6 @@ Component({
       this.setData({
         showOpt: true,
         selectCollectStation: e.currentTarget.dataset.name
->>>>>>> gjw
       })
     },
 
@@ -118,48 +105,12 @@ Component({
           app.globalData.address = wxMarkerData[0].address,
           app.globalData.cityInfo = data.originalData.result.addressComponent
         that.queryNearStation();
-<<<<<<< HEAD
-
       }
       BMap.regeocoding({
         fail: fail,
         success: success
       });
 
-    },
-
-    getMyLocation() {
-      var that = this;
-      let BMap = new bmap.BMapWX({
-        ak: that.data.ak
-      });
-      let fail = function (data) {
-        console.log(data);
-      };
-      let success = function (data) {
-        console.log(data);
-        let wxMarkerData = data.wxMarkerData;
-        that.setData({
-          markers: wxMarkerData,
-          latitude: wxMarkerData[0].latitude,
-          longitude: wxMarkerData[0].longitude,
-          address: wxMarkerData[0].address,
-          cityInfo: data.originalData.result.addressComponent
-        });
-        app.globalData.markers = wxMarkerData,
-          app.globalData.latitude = wxMarkerData[0].latitude,
-          app.globalData.longitude = wxMarkerData[0].longitude,
-          app.globalData.address = wxMarkerData[0].address,
-          app.globalData.cityInfo = data.originalData.result.addressComponent
-        that.queryNearStation();
-=======
->>>>>>> gjw
-
-      }
-      BMap.regeocoding({
-        fail: fail,
-        success: success
-      });
     },
 
     queryNearStation() {
@@ -170,11 +121,7 @@ Component({
           longitude: this.data.longitude,
           latitude: this.data.latitude,
           cityInfo: this.data.cityInfo.city,
-<<<<<<< HEAD
-          distance: this.data.currentValue*10
-=======
           distance: this.data.currentValue * 10
->>>>>>> gjw
         },
         success: (res) => {
           console.log(res)
@@ -201,12 +148,6 @@ Component({
     },
 
     choseStation(event) {
-<<<<<<< HEAD
-      let value = event.currentTarget.dataset.value
-      let name = event.currentTarget.dataset.name
-      wx.navigateTo({
-        url: '/pages/siteDetail/siteDetail?stationId=' + value+'&stationName='+ name,
-=======
       this.setData({
         showOpt: false
       })
@@ -216,7 +157,6 @@ Component({
       let yPoint = event.currentTarget.dataset.ypoint
       wx.navigateTo({
         url: '/pages/siteDetail/siteDetail?stationId=' + value + '&stationName=' + name + '&xPoint=' + xPoint + '&yPoint=' + yPoint,
->>>>>>> gjw
       })
 
     }
