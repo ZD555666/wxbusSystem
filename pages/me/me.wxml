@@ -8,11 +8,7 @@
 <van-cell is-link title="个人信息" link-type="navigateTo" url="/pages/myinfo/myinfo" />
 <van-cell is-link title="我的钱包" link-type="navigateTo" url="/pages/wollet/wollet" />
 <van-cell is-link title="扫码乘车" link-type="navigateTo" url="/pages/camera/camera" />
-<<<<<<< HEAD
-<van-cell is-link title="系统设置" link-type="navigateTo" url="" />
-=======
 <van-cell is-link title="收藏列表" link-type="navigateTo" url="" />
->>>>>>> gjw
 <van-cell is-link title="新闻公告" link-type="navigateTo" url="/pages/bulletin/bulletin"/>
 <van-cell is-link title="投诉建议" link-type="navigateTo" url="/pages/complaint/complaint"/>
 <van-cell is-link title="换乘建议" link-type="navigateTo" url="" />
