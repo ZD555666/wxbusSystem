@@ -7,10 +7,16 @@ Component({
         active: 0
       });
       this.getMyLocation();
-
-    }
+    },
+    hide() {
+      this.setData({ showOpt: false });
+    },
   },
   data: {
+    actions: [
+      { name: '收藏' }, { name: '分享', openType: 'share' }, { name: 'cancle' },
+    ],
+    showOpt: false,
     ak: "5sqq8W5B4v0ukIInelAaD8jW16Cz0zXj",
     markers: [],
     longitude: '',
@@ -19,7 +25,12 @@ Component({
     cityInfo: {},
     nearStation: [],
     currentValue: 50,
-    isHide: false
+    isHide: false,
+    touchStartTime: 0,
+    touchEndTime: 0,
+    lastTapTime: 0,
+    lastTapTimeoutFunc: null,
+    selectCollectStation: ''
   },
   methods: {
     onLocation() {
@@ -28,37 +39,45 @@ Component({
       })
     },
 
-    getMyLocation() {
-      var that = this;
-      let BMap = new bmap.BMapWX({
-        ak: that.data.ak
-      });
-      let fail = function (data) {
-        console.log(data);
-      };
-      let success = function (data) {
-        console.log(data);
-        let wxMarkerData = data.wxMarkerData;
-        that.setData({
-          markers: wxMarkerData,
-          latitude: wxMarkerData[0].latitude,
-          longitude: wxMarkerData[0].longitude,
-          address: wxMarkerData[0].address,
-          cityInfo: data.originalData.result.addressComponent
-        });
-        app.globalData.markers = wxMarkerData,
-          app.globalData.latitude = wxMarkerData[0].latitude,
-          app.globalData.longitude = wxMarkerData[0].longitude,
-          app.globalData.address = wxMarkerData[0].address,
-          app.globalData.cityInfo = data.originalData.result.addressComponent
-        that.queryNearStation();
+    onCloseOpt() {
+      this.setData({ showOpt: false });
+    },
 
-      }
-      BMap.regeocoding({
-        fail: fail,
-        success: success
-      });
+    onSelectOpt(event) {
+      // console.log(event.detail);
+      if (event.detail.name == '收藏') this.doCollect();
+    },
 
+    doCollect() {
+      // console.log(this.data.selectCollectStation)
+      wx.request({
+        url: app.globalData.prefix + '/wx/doCollect',
+        method: 'POST',
+        data: {
+          stationName: this.data.selectCollectStation,
+          cityName: app.globalData.cityInfo.city,
+          opId: wx.getStorageSync("loginUserInfo").openid
+        },
+        success: (res) => {
+          console.log(res)
+        }
+      })
+    },
+
+    touchStart: function (e) {
+      this.touchStartTime = e.timeStamp
+    },
+
+    touchEnd: function (e) {
+      this.touchEndTime = e.timeStamp
+    },
+
+    longpress: function (e) {
+      // console.log(e)
+      this.setData({
+        showOpt: true,
+        selectCollectStation: e.currentTarget.dataset.name
+      })
     },
 
     getMyLocation() {
@@ -101,7 +120,7 @@ Component({
           longitude: this.data.longitude,
           latitude: this.data.latitude,
           cityInfo: this.data.cityInfo.city,
-          distance: this.data.currentValue*10
+          distance: this.data.currentValue * 10
         },
         success: (res) => {
           console.log(res)
@@ -128,10 +147,15 @@ Component({
     },
 
     choseStation(event) {
+      this.setData({
+        showOpt: false
+      })
       let value = event.currentTarget.dataset.value
       let name = event.currentTarget.dataset.name
+      let xPoint = event.currentTarget.dataset.xpoint
+      let yPoint = event.currentTarget.dataset.ypoint
       wx.navigateTo({
-        url: '/pages/siteDetail/siteDetail?stationId=' + value+'&stationName='+ name,
+        url: '/pages/siteDetail/siteDetail?stationId=' + value + '&stationName=' + name + '&xPoint=' + xPoint + '&yPoint=' + yPoint,
       })
 
     }

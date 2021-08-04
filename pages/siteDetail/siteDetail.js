@@ -1,14 +1,29 @@
 const app = getApp();
+let bmap = require('../../utils/bmap-wx.min.js');
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
+    activeNames: [],
+    openMapTitle: '展开地图',
     stationId: '',
     busToWhere: [],
     distanceAndSpeed: [],
-    clickStation: ''
+    clickStation: '',
+    nowLongitude: '',
+    nowLatitude: '',
+    markers: [],
+    stationXpoint: '',
+    stationYpoint: '',
+    hideMap: true
+  },
+
+  onChange(event) {
+    this.setData({
+      activeNames: event.detail,
+      openMapTitle: event.detail == 1 ? "关闭地图" : "展开地图",
+      hideMap: event.detail == 1 ? false : true,
+    });
+
   },
 
   queryDetail() {
@@ -35,13 +50,13 @@ Page({
       method: 'POST',
       data: {
         busDetailInfo: this.data.busToWhere,
-        cityName: app.globalData.cityInfo.city
+        cityName: app.globalData.cityInfo.city,
+        clickStation: this.data.clickStation
       },
       success: (res) => {
         console.log(res)
         this.setData({
-          distanceAndSpeed: res.data.data,
-          clickStation: this.data.clickStation
+          distanceAndSpeed: res.data.data
         })
       }
     })
@@ -51,12 +66,27 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(this.data.nowLongitude)
     wx.setNavigationBarTitle({
       title: options.stationName
     })
     this.setData({
       stationId: options.stationId,
-      clickStation: options.stationName
+      clickStation: options.stationName,
+      nowLongitude: app.globalData.longitude,
+      nowLatitude: app.globalData.latitude,
+      stationXpoint: options.xPoint,
+      stationYpoint: options.yPoint,
+      markers: [
+        {
+          iconPath: "../../images/marker_red.png",
+          id: 0,
+          longitude: options.xPoint,
+          latitude: options.yPoint,
+          wigth: "15px",
+          height: "33px"
+        }
+      ],
     })
     this.queryDetail();
   },
