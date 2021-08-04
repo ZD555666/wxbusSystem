@@ -1,4 +1,19 @@
 const app = getApp();
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    stationId: '',
+    busToWhere: [],
+    distanceAndSpeed: [],
+    clickStation: ''
+=======
+>>>>>>> master
 let bmap = require('../../utils/bmap-wx.min.js');
 Page({
 
@@ -24,6 +39,10 @@ Page({
       hideMap: event.detail == 1 ? false : true,
     });
 
+<<<<<<< HEAD
+=======
+>>>>>>> gjw
+>>>>>>> master
   },
 
   queryDetail() {
@@ -50,13 +69,31 @@ Page({
       method: 'POST',
       data: {
         busDetailInfo: this.data.busToWhere,
+<<<<<<< HEAD
         cityName: app.globalData.cityInfo.city,
         clickStation: this.data.clickStation
+=======
+<<<<<<< HEAD
+        cityName: app.globalData.cityInfo.city
+=======
+        cityName: app.globalData.cityInfo.city,
+        clickStation: this.data.clickStation
+>>>>>>> gjw
+>>>>>>> master
       },
       success: (res) => {
         console.log(res)
         this.setData({
+<<<<<<< HEAD
           distanceAndSpeed: res.data.data
+=======
+<<<<<<< HEAD
+          distanceAndSpeed: res.data.data,
+          clickStation: this.data.clickStation
+=======
+          distanceAndSpeed: res.data.data
+>>>>>>> gjw
+>>>>>>> master
         })
       }
     })
@@ -66,12 +103,25 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+<<<<<<< HEAD
     console.log(this.data.nowLongitude)
+=======
+<<<<<<< HEAD
+=======
+    console.log(this.data.nowLongitude)
+>>>>>>> gjw
+>>>>>>> master
     wx.setNavigationBarTitle({
       title: options.stationName
     })
     this.setData({
       stationId: options.stationId,
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+      clickStation: options.stationName
+=======
+>>>>>>> master
       clickStation: options.stationName,
       nowLongitude: app.globalData.longitude,
       nowLatitude: app.globalData.latitude,
@@ -87,6 +137,10 @@ Page({
           height: "33px"
         }
       ],
+<<<<<<< HEAD
+=======
+>>>>>>> gjw
+>>>>>>> master
     })
     this.queryDetail();
   },

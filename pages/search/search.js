@@ -10,7 +10,15 @@ Page({
   },
   onClick(){
     wx.reLaunch({
+<<<<<<< HEAD
       url: '/pages/road/road',
+=======
+<<<<<<< HEAD
+      url: 'pages/road/road',
+=======
+      url: '/pages/road/road',
+>>>>>>> gjw
+>>>>>>> master
     })
   },
   onSearch(event){

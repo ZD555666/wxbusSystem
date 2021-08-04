@@ -1,6 +1,15 @@
 <wxs module="filters" src="../index/filters.wxs"></wxs>
 <van-cell-group inset border>
   <block wx:key="index" wx:for="{{distanceAndSpeed}}">
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    <van-cell center is-link icon="map-marked" title="{{item.busNo}}" label="方向 {{item.endStation}}" value="{{item.busNo}}"/>
+    <view>{{filters.toFix(item.distanceTime)}},{{filters.toFix(item.distance)}}</view>
+  </block>
+</van-cell-group>
+=======
+>>>>>>> master
     <van-cell center is-link icon="map-marked" title="{{item.busNo}}" label="方向 {{item.endStation}}"
       value="{{item.surplusStation}}站 / {{filters.toFix(item.distanceTime)}}分钟 / {{filters.toFix(item.distance)}}m" />
   </block>
@@ -13,3 +22,7 @@
     </view>
   </van-collapse-item>
 </van-collapse>
+<<<<<<< HEAD
+=======
+>>>>>>> gjw
+>>>>>>> master
