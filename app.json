@@ -17,6 +17,10 @@
     "pages/complaint/complaint",
     "pages/road/road",
     "pages/searchStation/searchStation"
+<<<<<<< HEAD
+=======
+    
+>>>>>>> master
   ],
   "window": {
     "backgroundTextStyle": "light",

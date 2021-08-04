@@ -23,6 +23,10 @@ Page({
       openMapTitle: event.detail == 1 ? "关闭地图" : "展开地图",
       hideMap: event.detail == 1 ? false : true,
     });
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
   },
 
   queryDetail() {

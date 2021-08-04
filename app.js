@@ -19,8 +19,12 @@ App({
     address: '',
     cityInfo: '',
     userInfo: null,
+<<<<<<< HEAD
     // prefix: 'http://localhost:8080'
     prefix: 'http://192.168.31.49:8080'
+=======
+    prefix: 'http://localhost:8080'
+>>>>>>> master
     // prefix: 'http://192.168.31.49:8080'
   }
 })

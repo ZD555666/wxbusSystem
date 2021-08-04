@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+/* pages/siteDetail/siteDetail.wxss */
+>>>>>>> master
 .map_container{ 
   height: 420px; 
   width: 100%; 

@@ -12,4 +12,8 @@
         show-location="true" markers="{{markers}}" bindmarkertap="makertap"></map>
     </view>
   </van-collapse-item>
+<<<<<<< HEAD
 </van-collapse>
+=======
+</van-collapse>
+>>>>>>> master
