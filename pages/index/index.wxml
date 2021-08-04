@@ -39,10 +39,17 @@
     <view class="station">
       <van-cell-group inset border>
         <block wx:key="unique" wx:for="{{nearStation}}">
+<<<<<<< HEAD
 
           <van-cell bind:click="choseStation" is-link icon="map-marked" title="{{item.stationName}}"
             value="{{filters.toFix(item.distance)}}m" data-value="{{item.stationId}}"
             data-name="{{item.stationName}}" />
+=======
+          <van-cell bind:click="choseStation" is-link icon="map-marked" title="{{item.stationName}}"
+            value="{{filters.toFix(item.distance)}}m" data-value="{{item.stationId}}"
+            data-name="{{item.stationName}}" data-xpoint="{{item.xpoint}}" data-ypoint="{{item.ypoint}}"
+            bindlongpress="longpress" bindtouchstart="touchStart" bindtouchend="touchEnd"/>
+>>>>>>> gjw
         </block>
       </van-cell-group>
     </view>
@@ -53,4 +60,9 @@
   <view>纬度：{{latitude}}</view>
   <view>地址：{{address}}</view>
   <view>城市：{{cityInfo.city}}</view>
+<<<<<<< HEAD
 </view>
+=======
+</view>
+<van-action-sheet show="{{ showOpt }}" actions="{{ actions }}" bind:close="onCloseOpt" bind:select="onSelectOpt" />
+>>>>>>> gjw

@@ -1,4 +1,5 @@
 const app = getApp();
+<<<<<<< HEAD
 Page({
 
   /**
@@ -9,6 +10,33 @@ Page({
     busToWhere: [],
     distanceAndSpeed: [],
     clickStation: ''
+=======
+let bmap = require('../../utils/bmap-wx.min.js');
+Page({
+
+  data: {
+    activeNames: [],
+    openMapTitle: '展开地图',
+    stationId: '',
+    busToWhere: [],
+    distanceAndSpeed: [],
+    clickStation: '',
+    nowLongitude: '',
+    nowLatitude: '',
+    markers: [],
+    stationXpoint: '',
+    stationYpoint: '',
+    hideMap: true
+  },
+
+  onChange(event) {
+    this.setData({
+      activeNames: event.detail,
+      openMapTitle: event.detail == 1 ? "关闭地图" : "展开地图",
+      hideMap: event.detail == 1 ? false : true,
+    });
+
+>>>>>>> gjw
   },
 
   queryDetail() {
@@ -35,13 +63,22 @@ Page({
       method: 'POST',
       data: {
         busDetailInfo: this.data.busToWhere,
+<<<<<<< HEAD
         cityName: app.globalData.cityInfo.city
+=======
+        cityName: app.globalData.cityInfo.city,
+        clickStation: this.data.clickStation
+>>>>>>> gjw
       },
       success: (res) => {
         console.log(res)
         this.setData({
+<<<<<<< HEAD
           distanceAndSpeed: res.data.data,
           clickStation: this.data.clickStation
+=======
+          distanceAndSpeed: res.data.data
+>>>>>>> gjw
         })
       }
     })
@@ -51,12 +88,34 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+<<<<<<< HEAD
+=======
+    console.log(this.data.nowLongitude)
+>>>>>>> gjw
     wx.setNavigationBarTitle({
       title: options.stationName
     })
     this.setData({
       stationId: options.stationId,
+<<<<<<< HEAD
       clickStation: options.stationName
+=======
+      clickStation: options.stationName,
+      nowLongitude: app.globalData.longitude,
+      nowLatitude: app.globalData.latitude,
+      stationXpoint: options.xPoint,
+      stationYpoint: options.yPoint,
+      markers: [
+        {
+          iconPath: "../../images/marker_red.png",
+          id: 0,
+          longitude: options.xPoint,
+          latitude: options.yPoint,
+          wigth: "15px",
+          height: "33px"
+        }
+      ],
+>>>>>>> gjw
     })
     this.queryDetail();
   },

@@ -1,5 +1,5 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
     "pages/towhere/towhere",
     "pages/history/history",
@@ -17,15 +17,17 @@
     "pages/complaint/complaint",
     "pages/road/road",
     "pages/searchStation/searchStation"
+<<<<<<< HEAD
     
+=======
+>>>>>>> gjw
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "掌上公交",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   },
-
   "sitemapLocation": "sitemap.json",
   "usingComponents": {
     "van-icon": "@vant/weapp/icon/index",
@@ -54,31 +56,34 @@
     "van-popup": "@vant/weapp/popup/index",
     "van-notice-bar": "@vant/weapp/notice-bar/index",
     "van-empty": "@vant/weapp/empty/index",
+<<<<<<< HEAD
     "van-uploader": "@vant/weapp/uploader/index"
 
+=======
+    "van-uploader": "@vant/weapp/uploader/index",
+    "van-collapse": "@vant/weapp/collapse/index",
+    "van-collapse-item": "@vant/weapp/collapse-item/index"
+>>>>>>> gjw
   },
-
-  "tabBar":{
+  "tabBar": {
     "custom": true,
-    "list":[
+    "list": [
       {
-        "text":"首页",
-        "pagePath":"pages/index/index"
+        "text": "首页",
+        "pagePath": "pages/index/index"
       },
       {
-        "text":"去哪",
-        "pagePath":"pages/towhere/towhere"
+        "text": "去哪",
+        "pagePath": "pages/towhere/towhere"
       },
       {
-        "text":"新闻",
-        "pagePath":"pages/history/history"
+        "text": "新闻",
+        "pagePath": "pages/history/history"
       },
       {
-        "text":"个人中心",
-        "pagePath":"pages/me/me"
+        "text": "个人中心",
+        "pagePath": "pages/me/me"
       }
     ]
   }
-
-
 }
