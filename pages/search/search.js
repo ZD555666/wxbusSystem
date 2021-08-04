@@ -10,11 +10,7 @@ Page({
   },
   onClick(){
     wx.reLaunch({
-<<<<<<< HEAD
-      url: 'pages/road/road',
-=======
       url: '/pages/road/road',
->>>>>>> gjw
     })
   },
   onSearch(event){
