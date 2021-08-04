@@ -31,7 +31,13 @@ Component({
     touchEndTime: 0,
     lastTapTime: 0,
     lastTapTimeoutFunc: null,
+<<<<<<< HEAD
     selectCollectStation: ''
+=======
+    selectCollectStation: '',
+    xPoint: '',
+    yPoint: ''
+>>>>>>> gjw
   },
   methods: {
     onLocation() {
@@ -47,6 +53,10 @@ Component({
     onSelectOpt(event) {
       // console.log(event.detail);
       if (event.detail.name == '收藏') this.doCollect();
+<<<<<<< HEAD
+=======
+      
+>>>>>>> gjw
     },
 
     doCollect() {
@@ -57,10 +67,21 @@ Component({
         data: {
           stationName: this.data.selectCollectStation,
           cityName: app.globalData.cityInfo.city,
+<<<<<<< HEAD
           opId: wx.getStorageSync("loginUserInfo").openid
         },
         success: (res) => {
           console.log(res)
+=======
+          opId: wx.getStorageSync("loginUserInfo").openid,
+          stationId: this.data.stationId,
+          xPoint: this.data.xPoint,
+          yPoint: this.data.yPoint
+        },
+        success: (res) => {
+          console.log(res)
+          //exist
+>>>>>>> gjw
         }
       })
     },
@@ -77,8 +98,17 @@ Component({
       // console.log(e)
       this.setData({
         showOpt: true,
+<<<<<<< HEAD
         selectCollectStation: e.currentTarget.dataset.name
       })
+=======
+        selectCollectStation: e.currentTarget.dataset.name,
+        stationId: e.currentTarget.dataset.value,
+        xPoint: e.currentTarget.dataset.xpoint,
+        yPoint: e.currentTarget.dataset.ypoint
+      })
+      // console.log(this.data.xPoint)
+>>>>>>> gjw
     },
 
     getMyLocation() {
@@ -156,7 +186,12 @@ Component({
       let xPoint = event.currentTarget.dataset.xpoint
       let yPoint = event.currentTarget.dataset.ypoint
       wx.navigateTo({
+<<<<<<< HEAD
         url: '/pages/siteDetail/siteDetail?stationId=' + value + '&stationName=' + name + '&xPoint=' + xPoint + '&yPoint=' + yPoint,
+=======
+        url: '/pages/siteDetail/siteDetail?stationId=' +
+          value + '&stationName=' + name + '&xPoint=' + xPoint + '&yPoint=' + yPoint + "&cityName=" + app.globalData.cityInfo.city,
+>>>>>>> gjw
       })
 
     }

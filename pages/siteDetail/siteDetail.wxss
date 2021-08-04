@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 /* pages/siteDetail/siteDetail.wxss */
+=======
+>>>>>>> gjw
 .map_container{ 
   height: 420px; 
   width: 100%; 
@@ -7,4 +10,8 @@
 .map { 
   height: 100%; 
   width: 100%; 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> gjw
