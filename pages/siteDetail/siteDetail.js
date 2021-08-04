@@ -14,10 +14,6 @@ Page({
     markers: [],
     stationXpoint: '',
     stationYpoint: '',
-<<<<<<< HEAD
-=======
-    cityName:'',
->>>>>>> gjw
     hideMap: true
   },
 
@@ -27,10 +23,6 @@ Page({
       openMapTitle: event.detail == 1 ? "关闭地图" : "展开地图",
       hideMap: event.detail == 1 ? false : true,
     });
-<<<<<<< HEAD
-
-=======
->>>>>>> gjw
   },
 
   queryDetail() {
@@ -39,11 +31,7 @@ Page({
       method: 'POST',
       data: {
         stationId: parseInt(this.data.stationId),
-<<<<<<< HEAD
         cityName: app.globalData.cityInfo.city
-=======
-        cityName: this.data.cityName
->>>>>>> gjw
       },
       success: (res) => {
         console.log(res)
@@ -61,11 +49,7 @@ Page({
       method: 'POST',
       data: {
         busDetailInfo: this.data.busToWhere,
-<<<<<<< HEAD
         cityName: app.globalData.cityInfo.city,
-=======
-        cityName: this.data.cityName,
->>>>>>> gjw
         clickStation: this.data.clickStation
       },
       success: (res) => {
@@ -82,10 +66,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-<<<<<<< HEAD
     console.log(this.data.nowLongitude)
-=======
->>>>>>> gjw
     wx.setNavigationBarTitle({
       title: options.stationName
     })
@@ -96,10 +77,6 @@ Page({
       nowLatitude: app.globalData.latitude,
       stationXpoint: options.xPoint,
       stationYpoint: options.yPoint,
-<<<<<<< HEAD
-=======
-      cityName: options.cityName,
->>>>>>> gjw
       markers: [
         {
           iconPath: "../../images/marker_red.png",
@@ -162,8 +139,4 @@ Page({
   onShareAppMessage: function () {
 
   }
-<<<<<<< HEAD
 })
-=======
-})
->>>>>>> gjw
