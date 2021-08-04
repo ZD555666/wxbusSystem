@@ -16,7 +16,8 @@
     "pages/bulletin/bulletin",
     "pages/complaint/complaint",
     "pages/road/road",
-    "pages/searchStation/searchStation"
+    "pages/searchStation/searchStation",
+    "pages/collect/collect"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -54,7 +55,8 @@
     "van-empty": "@vant/weapp/empty/index",
     "van-uploader": "@vant/weapp/uploader/index",
     "van-collapse": "@vant/weapp/collapse/index",
-    "van-collapse-item": "@vant/weapp/collapse-item/index"
+    "van-collapse-item": "@vant/weapp/collapse-item/index",
+    "van-tree-select": "@vant/weapp/tree-select/index"
   },
   "tabBar": {
     "custom": true,

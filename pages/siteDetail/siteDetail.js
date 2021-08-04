@@ -14,6 +14,7 @@ Page({
     markers: [],
     stationXpoint: '',
     stationYpoint: '',
+    cityName:'',
     hideMap: true
   },
 
@@ -31,7 +32,7 @@ Page({
       method: 'POST',
       data: {
         stationId: parseInt(this.data.stationId),
-        cityName: app.globalData.cityInfo.city
+        cityName: this.data.cityName
       },
       success: (res) => {
         console.log(res)
@@ -49,7 +50,7 @@ Page({
       method: 'POST',
       data: {
         busDetailInfo: this.data.busToWhere,
-        cityName: app.globalData.cityInfo.city,
+        cityName: this.data.cityName,
         clickStation: this.data.clickStation
       },
       success: (res) => {
@@ -66,7 +67,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(this.data.nowLongitude)
     wx.setNavigationBarTitle({
       title: options.stationName
     })
@@ -77,6 +77,7 @@ Page({
       nowLatitude: app.globalData.latitude,
       stationXpoint: options.xPoint,
       stationYpoint: options.yPoint,
+      cityName: options.cityName,
       markers: [
         {
           iconPath: "../../images/marker_red.png",
